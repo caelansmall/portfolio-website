@@ -1,13 +1,43 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import { useSpring, animated } from '@react-spring/web'
 
 export function Welcome() {
+
+  const [springs, api] = useSpring(() => ({
+    from: { x: 0 },
+  }))
+
+  const handleClick = () => {
+    api.start({
+      from: {
+        x: 0,
+      },
+      to: {
+        x: 100,
+      },
+    })
+  }
+
   return (
+
+    // <animated.div
+    //   onClick={handleClick}
+    //   style={{
+    //     width: 80,
+    //     height: 80,
+    //     background: '#ff6d6d',
+    //     borderRadius: 8,
+    //     ...springs,
+    //   }}
+    // />
+
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <div className="w-[500px] max-w-[100vw] p-4">
-            <img
+            Caelan Small
+            {/* <img
               src={logoLight}
               alt="React Router"
               className="block w-full dark:hidden"
@@ -16,10 +46,10 @@ export function Welcome() {
               src={logoDark}
               alt="React Router"
               className="hidden w-full dark:block"
-            />
+            /> */}
           </div>
         </header>
-        <div className="max-w-[300px] w-full space-y-6 px-4">
+        {/* <div className="max-w-[300px] w-full space-y-6 px-4">
           <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
             <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
               What&apos;s next?
@@ -40,7 +70,7 @@ export function Welcome() {
               ))}
             </ul>
           </nav>
-        </div>
+        </div> */}
       </div>
     </main>
   );
