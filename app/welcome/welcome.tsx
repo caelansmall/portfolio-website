@@ -1,9 +1,6 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
 import { useSpring, animated } from '@react-spring/web'
-import { Boxes } from 'app/background-boxes'
-import { cn } from 'lib/utils'
 import Hero from '~/hero'
+import Navbar from "~/navbar";
 
 export function Welcome() {
 
@@ -24,22 +21,14 @@ export function Welcome() {
 
   return (
 
-    // <animated.div
-    //   onClick={handleClick}
-    //   style={{
-    //     width: 80,
-    //     height: 80,
-    //     background: '#ff6d6d',
-    //     borderRadius: 8,
-    //     ...springs,
-    //   }}
-    // />
+    <div className="absolute top-0 left-0 h-full w-full">
 
-    <main className="h-full w-full">
+      <Navbar />
 
       <Hero />
 
-    </main>
+    </div>
+
   );
 }
 
