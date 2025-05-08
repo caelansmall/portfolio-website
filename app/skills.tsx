@@ -1,5 +1,4 @@
 import React from 'react';
-import RollingGallery from './circular-gallery';
 
 interface SkillArray {
     image: string;
