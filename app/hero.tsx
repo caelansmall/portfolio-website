@@ -14,8 +14,9 @@ export default function Hero() {
 
         <DecryptedText
           text="Caelan Small"
-          speed={100}
-          maxIterations={20}
+          speed={80}
+          maxIterations={30}
+          sequential={true}
           className="relative justify-center items-start font-light z-999 text-8xl text-left text-white font-mono pl"
           parentClassName="relative justify-center items-start font-light z-999 text-8xl text-left text-white font-mono"
           encryptedClassName="relative justify-center items-start font-light z-999 text-8xl text-left text-white font-mono"
@@ -24,8 +25,9 @@ export default function Hero() {
 
         <DecryptedText
           text="Software Engineer"
-          speed={100}
-          maxIterations={20}
+          speed={80}
+          maxIterations={30}
+          sequential={true}
           className="relative justify-center items-start font-light z-999 text-5xl text-left text-white font-mono"
           parentClassName="relative justify-center items-start font-light z-999 text-5xl text-left text-white font-mono"
           encryptedClassName="relative justify-center items-start font-light z-999 text-5xl text-left text-white font-mono"
