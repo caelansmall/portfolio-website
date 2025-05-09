@@ -4,6 +4,7 @@ import SkillsGallery from "~/skills-cards";
 export default function Skills() {
 
     return (
+        
         <SkillsGallery />
         
     );

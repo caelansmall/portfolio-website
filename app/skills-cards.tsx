@@ -10,7 +10,7 @@ const SkillsGallery = () => {
 
     const skillList: SkillArray[] = [
         {
-            image: '/icons/icon_angular_wht.svg',
+            image: '/icons/icon_angular_wht.png',
             text: 'Angular',
         },
         {
@@ -34,7 +34,7 @@ const SkillsGallery = () => {
             text: 'Docker'
         },
         {
-            image: '/icons/java.svg',
+            image: '/icons/java.png',
             text: 'Java'
         },
         {
@@ -42,21 +42,33 @@ const SkillsGallery = () => {
             text: 'Git'
         },
         {
-            image: '/icons/node.svg',
+            image: '/icons/node.png',
             text: 'Node'
+        },
+        {
+            image: '/icons/typescript.png',
+            text: 'TypeScript'
+        },
+        {
+            image: '/icons/bash.jpg',
+            text: 'Shell Scripting'
+        },
+        {
+            image: '/icons/api.png',
+            text: 'REST APIs'
         }
     ]
 
     
     return (
 
-        <div className='h-200 relative'>
+        <div className='h-full relative pt-25 pb-25 bg-[#0e172a]'>
 
             <CircularGallery
                 items={skillList}
                 bend={1}
                 textColor='#ffffff'
-                borderRadius={0.05}
+                borderRadius={0.03}
             />
 
         </div>
