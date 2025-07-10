@@ -101,12 +101,29 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = fals
 
 const ProjectsPage: React.FC = () => {
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "3.5rem 1rem" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "3rem", fontSize: "2.8rem" }}>My Projects</h1>
-      <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
-        {projects.map((project, idx) => (
-          <ProjectSection key={idx} project={project} reverse={idx % 2 === 1} />
-        ))}
+    <div style={{ background: "#0e172a", minHeight: "100vh", width: "100vw", margin: 0, padding: 0, overflow: 'hidden' }}>
+      {/* Subtle animated blurred gradient background */}
+      <div
+        style={{
+          position: 'fixed',
+          zIndex: 0,
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          pointerEvents: 'none',
+          background: `radial-gradient(circle at 25% 30%, rgba(64,142,255,0.20) 0, rgba(64,142,255,0.08) 40%, transparent 70%),
+                       radial-gradient(circle at 75% 70%, rgba(180,64,255,0.16) 0, rgba(180,64,255,0.07) 35%, transparent 70%)`,
+          filter: 'blur(32px)',
+          transition: 'background 0.5s',
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "3.5rem 1rem 3.5rem 1rem", paddingTop: "140px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
+          {projects.map((project, idx) => (
+            <ProjectSection key={idx} project={project} reverse={idx % 2 === 1} />
+          ))}
+        </div>
       </div>
     </div>
   );
