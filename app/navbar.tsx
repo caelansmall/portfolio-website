@@ -2,8 +2,11 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router';
 
-const Navbar = () => {
+interface NavbarProps {
+    logoComponent?: React.ReactNode;
+}
 
+const Navbar: React.FC<NavbarProps> = ({ logoComponent }) => {
     const [position, setPosition] = useState({
         left: 0,
         width: 0,
@@ -11,9 +14,13 @@ const Navbar = () => {
     });
 
     return (
-
         <div className='fixed top-0 left-0 flex w-full box-border align-center justify-between pt-8 pb-16 pl-32 pr-32 z-999999'>
-            <ul 
+            {logoComponent && (
+                <div style={{ display: 'flex', alignItems: 'center', marginRight: 32 }}>
+                    {logoComponent}
+                </div>
+            )}
+            <ul
                 onMouseLeave={() => {
                     setPosition((pv) => ({
                         ...pv,
@@ -26,11 +33,10 @@ const Navbar = () => {
                 <Tab setPosition={setPosition} path="/skills">Skills</Tab>
                 <Tab setPosition={setPosition} path="/projects">Projects</Tab>
                 <Tab setPosition={setPosition} path="/about">About</Tab>
-
+                <Tab setPosition={setPosition} path="/contact">Contact</Tab>
                 <Cursor position={position} />
             </ul>
         </div>
-
     );
 };
 
