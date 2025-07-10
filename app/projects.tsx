@@ -6,6 +6,8 @@ interface Project {
   description: string;
   imageUrl: string;
   link?: string;
+  longDescription?: string;
+  images?: string[];
 }
 
 // Example projects array (add more projects here easily)
@@ -100,6 +102,8 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = fals
 };
 
 const ProjectsPage: React.FC = () => {
+  const [modalProject, setModalProject] = React.useState<Project | null>(null);
+
   return (
     <div style={{ background: "#0e172a", minHeight: "100vh", width: "100vw", margin: 0, padding: 0, overflow: 'hidden' }}>
       {/* Subtle animated blurred gradient background */}
@@ -121,10 +125,107 @@ const ProjectsPage: React.FC = () => {
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "3.5rem 1rem 3.5rem 1rem", paddingTop: "140px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
           {projects.map((project, idx) => (
-            <ProjectSection key={idx} project={project} reverse={idx % 2 === 1} />
+            <div key={idx} style={{ cursor: "pointer" }} onClick={() => setModalProject(project)}>
+              <ProjectSection project={project} reverse={idx % 2 === 1} />
+            </div>
           ))}
         </div>
       </div>
+      {/* Modal */}
+      {modalProject && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(20,22,30,0.72)",
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "background 0.3s",
+          }}
+          onClick={() => setModalProject(null)}
+        >
+          <div
+            style={{
+              background: "#f8f9fa",
+              borderRadius: 26,
+              boxShadow: "0 8px 48px 0 #000b",
+              padding: "2.7rem 2.5rem 2.2rem 2.5rem",
+              minWidth: 340,
+              maxWidth: 600,
+              maxHeight: "90vh",
+              overflowY: "auto",
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalProject(null)}
+              style={{
+                position: "absolute",
+                top: 16,
+                right: 16,
+                background: "#eee",
+                border: "none",
+                borderRadius: "50%",
+                width: 36,
+                height: 36,
+                fontSize: 22,
+                fontWeight: 700,
+                color: "#444",
+                cursor: "pointer",
+                boxShadow: "0 2px 8px #0002",
+                zIndex: 2,
+              }}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <img
+              src={modalProject.imageUrl}
+              alt={modalProject.title}
+              style={{ width: 320, height: 230, objectFit: "cover", borderRadius: 18, marginBottom: 24, boxShadow: "0 2px 16px #0003" }}
+            />
+            <h2 style={{ margin: 0, fontSize: "2.2rem", color: "#343a40", lineHeight: 1.18 }}>{modalProject.title}</h2>
+            <p style={{ margin: "1.1rem 0 1.3rem 0", color: "#495057", fontSize: "1.17rem", lineHeight: 1.62, maxWidth: 540 }}>{modalProject.longDescription || modalProject.description}</p>
+            {modalProject.images && modalProject.images.length > 1 && (
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "1.2rem 0 0 0" }}>
+                {modalProject.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={modalProject.title + " extra " + idx}
+                    style={{ width: 110, height: 80, objectFit: "cover", borderRadius: 8, boxShadow: "0 1px 7px #0001" }}
+                  />
+                ))}
+              </div>
+            )}
+            {modalProject.link && (
+              <a
+                href={modalProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#007bff",
+                  textDecoration: "underline",
+                  fontWeight: 600,
+                  fontSize: "1.15rem",
+                  marginTop: 18,
+                }}
+              >
+                View Project
+              </a>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
