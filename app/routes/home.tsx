@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import Navbar from "~/navbar";
+import Hero from "~/hero";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,21 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        minHeight: '100vh',
+        minWidth: '100vw',
+        overflow: 'hidden',
+        position: 'relative',
+        padding: 0,
+        margin: 0,
+        boxSizing: 'border-box',
+      }}
+    >
+      <Hero />
+    </div>
+  )
 }

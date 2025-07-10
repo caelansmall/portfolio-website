@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import Navbar from "./navbar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,7 +20,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fredoka:wght@600&display=swap",
   },
 ];
 
@@ -41,8 +42,49 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+import React from 'react';
+import { useNavigate } from 'react-router';
+
+function LogoButton() {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => navigate('/')}
+      aria-label="Go to Home"
+      role="link"
+      tabIndex={0}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        fontFamily: 'Fredoka, Inter, Segoe UI, Arial, sans-serif',
+        fontWeight: 600,
+        fontSize: '1.35rem',
+        color: '#e6e6e6',
+        letterSpacing: '0.14em',
+        marginLeft: '-48px',
+        marginRight: 28,
+        userSelect: 'none',
+        background: 'none',
+        border: 'none',
+        padding: 0,
+        cursor: 'pointer',
+        outline: 'none',
+        transition: 'color 0.15s',
+      }}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { navigate('/'); } }}
+    >
+      CKFS
+    </button>
+  );
+}
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="absolute top-0 left-0 h-full w-full">
+      <Navbar logoComponent={<LogoButton />} />
+      <Outlet />
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
