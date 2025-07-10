@@ -25,7 +25,7 @@ const Navbar = () => {
                 <Tab setPosition={setPosition} path="/">Home</Tab>
                 <Tab setPosition={setPosition} path="/skills">Skills</Tab>
                 <Tab setPosition={setPosition} path="/projects">Projects</Tab>
-                {/* <Tab setPosition={setPosition} path="">About</Tab> */}
+                <Tab setPosition={setPosition} path="/about">About</Tab>
 
                 <Cursor position={position} />
             </ul>

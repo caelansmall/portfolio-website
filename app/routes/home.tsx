@@ -11,8 +11,20 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-
-    <Hero />
-    
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        minHeight: '100vh',
+        minWidth: '100vw',
+        overflow: 'hidden',
+        position: 'relative',
+        padding: 0,
+        margin: 0,
+        boxSizing: 'border-box',
+      }}
+    >
+      <Hero />
+    </div>
   )
 }
