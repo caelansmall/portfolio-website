@@ -13,13 +13,13 @@ const projects: Project[] = [
   {
     title: "Semi-Autonomous RC Car",
     description: "Developed a semi-autonomous Arduino-powered RC car with multiple driving modes—including remote control, roaming, parking, and summoning—using custom RF controllers and advanced line tracking with an RGB sensor for path differentiation.",
-    imageUrl: "/images/seniorDesign.jpg",
+    imageUrl: "images/seniorDesign.jpg",
     // link: "https://your-portfolio-link.com",
   },
   {
     title: "COVID-19 Auto Counter",
     description: "Designed and implemented an automated occupancy counter using IR sensors and an LCD display on the 8051 microcontroller, enabling essential businesses to safely monitor store capacity and enforce social distancing without additional staffing.",
-    imageUrl: "/images/covidAutoCounter.png",
+    imageUrl: "images/covidAutoCounter.png",
     // link: "https://your-task-tracker-link.com",
   },
   // Add more projects here

@@ -1,9 +1,1 @@
-import { type RouteConfig, index, route } from "@react-router/dev/routes";
-
-export default [
-    index("routes/home.tsx"),
-    route("skills", "routes/skills.tsx"),
-    route("projects", "routes/projects.tsx"),
-    route("about", "routes/about.tsx"),
-    route("contact", "routes/contact.tsx"),
-] satisfies RouteConfig;
+// routes.ts is now redundant in SPA mode. See main.tsx for route setup.
