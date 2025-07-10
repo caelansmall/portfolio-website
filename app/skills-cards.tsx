@@ -66,9 +66,10 @@ const SkillsGallery = () => {
 
             <CircularGallery
                 items={skillList}
-                bend={1}
+                bend={2.2}
                 textColor='#ffffff'
-                borderRadius={0.03}
+                borderRadius={0.05}
+                font='700 2.1rem Inter, Segoe UI, Arial, sans-serif'
             />
 
         </div>

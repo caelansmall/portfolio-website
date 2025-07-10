@@ -92,7 +92,7 @@ class Title {
     renderer,
     text,
     textColor = "#545050",
-    font = "30px sans-serif",
+    font = "30px monospace",
   }: TitleProps) {
     autoBind(this);
     this.gl = gl;
@@ -419,6 +419,7 @@ interface AppConfig {
 }
 
 class App {
+  private _wheelHandler?: (e: Event) => void;
   container: HTMLElement;
   scroll: {
     ease: number;
@@ -440,7 +441,7 @@ class App {
   raf: number = 0;
 
   boundOnResize!: () => void;
-  boundOnWheel!: () => void;
+  boundOnWheel!: (e?: WheelEvent) => void;
   boundOnTouchDown!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
@@ -455,12 +456,13 @@ class App {
       bend = 1,
       textColor = "#ffffff",
       borderRadius = 0,
-      font = "bold 30px DM Sans",
+      font = "bold 30px monospace",
     }: AppConfig
   ) {
     document.documentElement.classList.remove("no-js");
     this.container = container;
-    this.scroll = { ease: 0.05, current: 0, target: 0, last: 0 };
+    this.scroll = { ease: 0.09, current: 0, target: 0, last: 0 };
+
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.createRenderer();
     this.createCamera();
@@ -593,8 +595,14 @@ class App {
     this.onCheck();
   }
 
-  onWheel() {
-    this.scroll.target += 2;
+  onWheel(e?: WheelEvent) {
+    if (e) {
+      e.preventDefault();
+      // Negative deltaY means scroll up (move left), positive means scroll down (move right)
+      this.scroll.target += e.deltaY > 0 ? 2 : -2;
+    } else {
+      this.scroll.target += 2;
+    }
     this.onCheckDebounce();
   }
 
@@ -648,8 +656,9 @@ class App {
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
     window.addEventListener("resize", this.boundOnResize);
-    window.addEventListener("mousewheel", this.boundOnWheel);
-    window.addEventListener("wheel", this.boundOnWheel);
+    // Store the wheel handler so we can remove it later
+    this._wheelHandler = (e: Event) => this.boundOnWheel(e as WheelEvent);
+    window.addEventListener("wheel", this._wheelHandler, { passive: false });
     window.addEventListener("mousedown", this.boundOnTouchDown);
     window.addEventListener("mousemove", this.boundOnTouchMove);
     window.addEventListener("mouseup", this.boundOnTouchUp);
@@ -661,8 +670,9 @@ class App {
   destroy() {
     window.cancelAnimationFrame(this.raf);
     window.removeEventListener("resize", this.boundOnResize);
-    window.removeEventListener("mousewheel", this.boundOnWheel);
-    window.removeEventListener("wheel", this.boundOnWheel);
+    if (this._wheelHandler) {
+      window.removeEventListener("wheel", this._wheelHandler);
+    }
     window.removeEventListener("mousedown", this.boundOnTouchDown);
     window.removeEventListener("mousemove", this.boundOnTouchMove);
     window.removeEventListener("mouseup", this.boundOnTouchUp);
@@ -694,7 +704,7 @@ export default function CircularGallery({
   bend = 3,
   textColor = "#ffffff",
   borderRadius = 0.05,
-  font = "bold 30px DM Sans",
+  font = "bold 30px monospace",
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
