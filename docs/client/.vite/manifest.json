@@ -1,0 +1,94 @@
+{
+  "_chunk-KNED5TY2-CqQF2uaW.js": {
+    "file": "assets/chunk-KNED5TY2-CqQF2uaW.js",
+    "name": "chunk-KNED5TY2"
+  },
+  "_proxy-ikO1CP5u.js": {
+    "file": "assets/proxy-ikO1CP5u.js",
+    "name": "proxy",
+    "imports": [
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "_with-props-BIIjho7F.js": {
+    "file": "assets/with-props-BIIjho7F.js",
+    "name": "with-props",
+    "imports": [
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "app/root.tsx?__react-router-build-client-route": {
+    "file": "assets/root-_TiOiZ-k.js",
+    "name": "root",
+    "src": "app/root.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js",
+      "_proxy-ikO1CP5u.js"
+    ],
+    "css": [
+      "assets/root-DL5DmqGW.css"
+    ]
+  },
+  "app/routes/about.tsx?__react-router-build-client-route": {
+    "file": "assets/about-wznY33c2.js",
+    "name": "about",
+    "src": "app/routes/about.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "app/routes/contact.tsx?__react-router-build-client-route": {
+    "file": "assets/contact-CWa5dwHB.js",
+    "name": "contact",
+    "src": "app/routes/contact.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "app/routes/home.tsx?__react-router-build-client-route": {
+    "file": "assets/home-Su1QmRSx.js",
+    "name": "home",
+    "src": "app/routes/home.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js",
+      "_proxy-ikO1CP5u.js"
+    ]
+  },
+  "app/routes/projects.tsx?__react-router-build-client-route": {
+    "file": "assets/projects-CzF99969.js",
+    "name": "projects",
+    "src": "app/routes/projects.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "app/routes/skills.tsx?__react-router-build-client-route": {
+    "file": "assets/skills-CgO4UqPP.js",
+    "name": "skills",
+    "src": "app/routes/skills.tsx?__react-router-build-client-route",
+    "isEntry": true,
+    "imports": [
+      "_with-props-BIIjho7F.js",
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  },
+  "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx": {
+    "file": "assets/entry.client-CngWGZjh.js",
+    "name": "entry.client",
+    "src": "node_modules/@react-router/dev/dist/config/defaults/entry.client.tsx",
+    "isEntry": true,
+    "imports": [
+      "_chunk-KNED5TY2-CqQF2uaW.js"
+    ]
+  }
+}
