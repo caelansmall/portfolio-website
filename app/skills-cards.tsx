@@ -61,7 +61,7 @@ const SkillsGallery = () => {
 
     
     return (
-        <div className='h-full relative pt-25 pb-25 bg-[#0e172a]' style={{ overflow: 'hidden', minHeight: '100vh' }}>
+        <>
             {/* Subtle animated blurred gradient background */}
             <div
                 style={{
@@ -78,18 +78,18 @@ const SkillsGallery = () => {
                     transition: 'background 0.5s',
                 }}
             />
-            <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 500, height: '70vh', maxHeight: 750, width: '100vw', marginTop: 56 }}>
-                <div style={{ width: '100vw', height: '100%', minWidth: 320 }}>
+            <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%', minHeight: '60vh' }}>
+                <div style={{ width: '100vw', height: '75vh', background: 'none', margin: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <CircularGallery
                         items={skillList}
-                        bend={2.2}
+                        bend={2.4}
                         textColor='#ffffff'
                         borderRadius={0.05}
-                        font='700 2.1rem Inter, Segoe UI, Arial, sans-serif'
+                        font='700 1.5rem Inter, Segoe UI, Arial, sans-serif'
                     />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
