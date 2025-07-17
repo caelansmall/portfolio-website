@@ -4,6 +4,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: '/portfolio-website/',
+  base: '/',
   plugins: [react(), tsconfigPaths()],
 });
