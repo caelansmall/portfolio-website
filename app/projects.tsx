@@ -16,25 +16,31 @@ const projects: Project[] = [
     title: "Semi-Autonomous RC Car",
     description: "Developed a semi-autonomous Arduino-powered RC car with multiple driving modes—including remote control, roaming, parking, and summoning—using custom RF controllers and advanced line tracking with an RGB sensor for path differentiation.",
     imageUrl: "images/seniorDesign.jpg",
-    // link: "https://your-portfolio-link.com",
   },
   {
     title: "Enterprise Full Stack Application",
     description: "Contributed to the design and implementation of a large-scale enterprise web application using Angular, Node.js, Express, and SQL. Designed and normalized database tables, established complex relationships, and developed stored procedures and advanced queries. Authored numerous RESTful API endpoints within a robust Express backend. On the frontend, implemented dynamic, interactive data presentations—including tables and forms—leveraging Angular’s component architecture and state management. Collaborated across the stack to deliver scalable, maintainable solutions for complex data workflows.",
     imageUrl: "images/fullStack.png",
-    // link: "https://your-portfolio-link.com",
-  },
-  {
-    title: "COVID-19 Auto Counter",
-    description: "Designed and implemented an automated occupancy counter using IR sensors and an LCD display on the 8051 microcontroller, enabling essential businesses to safely monitor store capacity and enforce social distancing without additional staffing.",
-    imageUrl: "images/covidAutoCounter.png",
-    // link: "https://your-task-tracker-link.com",
   },
   {
     title: "Interactive Data Management Tool",
     description: "Initiated and developed an interactive React and Node.js application to streamline team workflows. Engineered robust data handling by organizing, sorting, and displaying information from JSON files within a dynamic frontend interface. Implemented seamless export functionality, allowing users to generate well-formatted CSV, PDF, and XML reports, along with import capabilities to reload and continue previous sessions. Additionally, built a comprehensive Python maintenance script to automate and optimize JSON file management, saving weeks of manual effort. The tool’s intuitive design and advanced features resulted in a twofold increase in team efficiency.",
     imageUrl: "images/dataTable.png",
-    // link: "https://your-task-tracker-link.com",
+  },
+  {
+    title: "DevOps Automation for Multi-Server Software Deployment",
+    description: "Contributed to the automation of software installation and configuration across diverse server environments, utilizing Ansible and Python scripting to streamline deployment workflows. Supported the integration team by troubleshooting deployment and infrastructure issues, and collaborated on optimizing automation playbooks for advanced networking and server setups. Played a key role in improving the reliability, scalability, and consistency of installations within a DevOps-focused environment.",
+    imageUrl: "images/devops.jpg",
+  },
+  {
+    title: "TCP/IP Binary Message Translator (Java)",
+    description: "Collaborated in a small team to develop a Java application for real-time processing and translation of binary messages over TCP/IP. Engineered the solution to receive, deserialize, and interpret incoming binary messages, convert them to a new format, and reserialize them for outbound transmission—all within strict, high-pressure deadlines. The project required deep understanding of network protocols, binary serialization, and robust error handling, and was delivered successfully on time.",
+    imageUrl: "images/tcpip.png",
+  },
+  {
+    title: "COVID-19 Auto Counter",
+    description: "Designed and implemented an automated occupancy counter using IR sensors and an LCD display on the 8051 microcontroller, enabling essential businesses to safely monitor store capacity and enforce social distancing without additional staffing.",
+    imageUrl: "images/covidAutoCounter.png",
   }
   // Add more projects here
 ];
