@@ -2,7 +2,7 @@
   "name": "my-react-router-app",
   "private": true,
   "type": "module",
-  "homepage": "https://caelansmall.github.io/portfolio-website",
+  "homepage": "https://caelansmall.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
