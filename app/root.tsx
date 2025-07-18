@@ -37,7 +37,7 @@ function LogoButton() {
 
 export default function App() {
   return (
-    <div className="absolute top-0 left-0 h-full w-full">
+    <div className="absolute top-0 left-0 h-full w-full" style={{ overflowX: 'hidden' }} >
       <Navbar logoComponent={<LogoButton />} />
       <Outlet />
     </div>

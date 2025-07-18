@@ -20,7 +20,11 @@ export default function Projects() {
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
                 zIndex: 2,
+                /* Hide scrollbar for all browsers */
+                msOverflowStyle: "none", /* IE and Edge */
+                scrollbarWidth: "none", /* Firefox */
             }}
+            className="hide-scrollbar"
         >
             <ProjectsPage />
         </div>
