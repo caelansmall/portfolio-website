@@ -41,13 +41,13 @@ export default function About() {
         background: "#0e172a",
         minHeight: "100vh",
         width: "100vw",
-        overflowX: "hidden",
-        overflowY: "auto",
+        overflow: "hidden",
         position: "relative",
         padding: 0,
         margin: 0,
         boxSizing: 'border-box',
       }}
+      className="hide-scrollbar"
     >
       {/* Subtle blurred gradient background accents */}
       <div
