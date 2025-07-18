@@ -4,7 +4,7 @@ import Hero from "~/hero";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Portfolio | Caelan Small" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }

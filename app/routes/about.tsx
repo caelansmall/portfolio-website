@@ -29,9 +29,9 @@ const AccentSVG: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
 
 const aboutText = [
   "Hi, I’m Caelan Small — a passionate and versatile Software Engineer with a strong foundation in computer engineering and a knack for building efficient, scalable, and user-focused solutions.",
-  "I currently work at Northrop Grumman, where I develop full-stack applications, automate infrastructure with tools like Ansible and Docker, and craft backend systems that streamline internal processes. I hold a Bachelor of Science in Computer Engineering with a minor in Mathematics from Merrimack College, where I also earned President’s List honors.",
-  "My experience spans a wide range of technologies, from developing Angular/Node.js web applications to programming embedded systems and microcontrollers. I’ve worked on projects like a semi-autonomous RC car and a COVID-19 occupancy counter, combining hardware and software to solve real-world problems. I thrive in collaborative environments where I can tackle complex challenges, continuously learn, and contribute to impactful projects.",
-  "I’m committed to building reliable, well-crafted solutions that make a tangible impact.",
+  "I currently work at Northrop Grumman, where I develop full-stack applications, automate infrastructure with tools like Ansible and Docker, and craft backend systems that streamline internal processes. I hold a Bachelor of Science in Computer Engineering with a minor in Mathematics from Merrimack College.",
+  "Throughout my career, I’ve tackled a diverse range of projects that showcase my technical versatility and creativity. Notably, I engineered a semi-autonomous RC car and developed a COVID-19 occupancy counter, both of which required seamlessly integrating hardware and software to address real-world challenges. My experience spans technologies from Angular/Node.js web applications to embedded systems and microcontroller programming. These hands-on projects are a testament to my drive for building innovative solutions that have a tangible impact.",
+  "I thrive in collaborative environments where I can tackle complex challenges, continuously learn, and contribute to meaningful, impactful projects. I’m committed to building reliable, well-crafted solutions that make a real difference.",
 ];
 
 export default function About() {

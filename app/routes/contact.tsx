@@ -27,7 +27,7 @@ const AccentSVG: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
   </svg>
 );
 
-const EMAIL = "smallc@merrimack.edu";
+const EMAIL = "caelansmall@me.com";
 const LINKEDIN = "https://www.linkedin.com/in/caelan-small/";
 
 export default function Contact() {
