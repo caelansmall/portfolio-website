@@ -28,9 +28,9 @@ const AccentSVG: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
 );
 
 const aboutText = [
-  "Hi, I’m Caelan Small — a passionate and versatile Software Engineer with a strong foundation in computer engineering and a knack for building efficient, scalable, and user-focused solutions.",
+  "Hi, I'm Caelan Small, and I am a driven and adaptable software engineer with a solid background in computer engineering and a talent for creating scalable, user-focused solutions.",
   "I currently work at Northrop Grumman, where I develop full-stack applications, automate infrastructure with tools like Ansible and Docker, and craft backend systems that streamline internal processes. I hold a Bachelor of Science in Computer Engineering with a minor in Mathematics from Merrimack College.",
-  "Throughout my career, I’ve tackled a diverse range of projects that showcase my technical versatility and creativity. Notably, I engineered a semi-autonomous RC car and developed a COVID-19 occupancy counter, both of which required seamlessly integrating hardware and software to address real-world challenges. My experience spans technologies from Angular/Node.js web applications to embedded systems and microcontroller programming. These hands-on projects are a testament to my drive for building innovative solutions that have a tangible impact.",
+  "Throughout my career, I’ve tackled a diverse range of projects that showcase my technical versatility and creativity. This includes a semi-autonomous RC car and a COVID-19 occupancy counter, both of which required integrating hardware and software to address real-world challenges. My experience spans technologies from Angular/Node.js web applications to embedded systems and microcontroller programming.",
   "I thrive in collaborative environments where I can tackle complex challenges, continuously learn, and contribute to meaningful, impactful projects. I’m committed to building reliable, well-crafted solutions that make a real difference.",
 ];
 
@@ -85,7 +85,7 @@ export default function About() {
           textAlign: 'left',
         }}
       >
-        <h1 style={{ fontSize: '2.9rem', fontWeight: 800, marginBottom: '2.1rem', letterSpacing: '-1.5px', background: 'linear-gradient(90deg,#408EFF,#B440FF 85%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textAlign: 'left' }}>
+        <h1 style={{ fontSize: '2.9rem', fontWeight: 800, marginBottom: '2.1rem', letterSpacing: '-1.5px', background: 'linear-gradient(90deg,#408EFF,#B440FF 85%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textAlign: 'left', paddingBottom: 24 }}>
           About Me
         </h1>
         {aboutText.map((p, i) => (
