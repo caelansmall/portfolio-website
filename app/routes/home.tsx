@@ -14,10 +14,7 @@ export default function Home() {
     <div
       style={{
         width: '100vw',
-        height: '100vh',
         minHeight: '100vh',
-        minWidth: '100vw',
-        overflow: 'hidden',
         position: 'relative',
         padding: 0,
         margin: 0,

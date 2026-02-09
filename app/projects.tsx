@@ -13,6 +13,11 @@ interface Project {
 // Example projects array (add more projects here easily)
 const projects: Project[] = [
   {
+    title: "The Digital Cookbook | thedigitalcookbook.com",
+    description: 'Engineered a full-stack web application with the purpose of being an online recipe management tool. Designed and coded the frontend using React. Created a RESTful API using Express and Node.js. User authentication is set up using AWS Cognito with a Lambda trigger for database synchronization. Designed and built a PostgreSQL database to be clean and efficient. Social feed and friends soon to come!',
+    imageUrl: "images/thedigitalcookbook.png"
+  },
+  {
     title: "Semi-Autonomous RC Car",
     description: "Developed a semi-autonomous Arduino-powered RC car with multiple driving modes—including remote control, roaming, parking, and summoning—using custom RF controllers and advanced line tracking with an RGB sensor for path differentiation.",
     imageUrl: "images/seniorDesign.jpg",
