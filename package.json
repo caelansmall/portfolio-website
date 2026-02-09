@@ -16,6 +16,7 @@
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.34.0",
     "isbot": "^5.1.17",
     "motion": "^12.7.2",
     "ogl": "^1.0.11",

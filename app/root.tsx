@@ -10,8 +10,8 @@ function LogoButton() {
       aria-label="Go to Home"
       role="link"
       tabIndex={0}
+      className="hidden md:flex" // Hide on mobile, show on md+
       style={{
-        display: 'flex',
         alignItems: 'center',
         fontFamily: 'Fredoka, Inter, Segoe UI, Arial, sans-serif',
         fontWeight: 600,
@@ -43,5 +43,3 @@ export default function App() {
     </div>
   );
 }
-
-

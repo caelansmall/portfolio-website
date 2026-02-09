@@ -14,9 +14,9 @@ const Navbar: React.FC<NavbarProps> = ({ logoComponent }) => {
     });
 
     return (
-        <div className='fixed top-0 left-0 flex w-full box-border align-center justify-between pt-8 pb-16 pl-32 pr-32 z-999999'>
+        <div className='fixed top-0 left-0 flex w-full box-border align-center justify-between pt-4 md:pt-8 pb-8 md:pb-16 px-4 md:px-16 lg:px-32 z-[9999]'>
             {logoComponent && (
-                <div style={{ display: 'flex', alignItems: 'center', marginRight: 32 }}>
+                <div className='hidden md:flex items-center mr-8'>
                     {logoComponent}
                 </div>
             )}
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ logoComponent }) => {
                         opacity: 0,
                     }));
                 }}
-                className='relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1'
+                className='relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1 scale-75 md:scale-100'
             >
                 <Tab setPosition={setPosition} path="/">Home</Tab>
                 <Tab setPosition={setPosition} path="/skills">Skills</Tab>
@@ -58,10 +58,9 @@ const Tab = ({children, setPosition, path}:{children:any,setPosition:any,path:st
                 });
             }}
             onClick={() => {
-                console.log('in on click')
                 navigate(path);
             }}
-            className='relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base'
+            className='relative z-10 block cursor-pointer px-2 py-1 text-[10px] uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base'
         >
             {children}
         </li>
@@ -71,7 +70,7 @@ const Tab = ({children, setPosition, path}:{children:any,setPosition:any,path:st
 const Cursor = ({position}:{position:any}) => {
     return <motion.li 
         animate={position}
-        className='absolute z-0 h-7 w-24 rounded-full bg-black md:h-12'
+        className='absolute z-0 h-6 rounded-full bg-black md:h-12'
     />;
 };
 

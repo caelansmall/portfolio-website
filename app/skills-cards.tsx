@@ -1,4 +1,3 @@
-import React from 'react';
 import CircularGallery from './circular-gallery';
 
 interface SkillArray {
@@ -43,7 +42,7 @@ const SkillsGallery = () => {
         },
         {
             image: 'icons/node.png',
-            text: 'Node'
+            text: 'Node.js'
         },
         {
             image: 'icons/typescript.png',
@@ -56,6 +55,14 @@ const SkillsGallery = () => {
         {
             image: 'icons/api.png',
             text: 'REST APIs'
+        },
+        {
+            image: 'icons/pngegg.png',
+            text: 'PostgreSQL'
+        },
+        {
+            image: 'icons/aws.png',
+            text: 'Serverless AWS'
         }
     ]
 
