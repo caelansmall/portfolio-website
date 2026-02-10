@@ -1,34 +1,25 @@
 import ProjectsPage from "~/projects";
 
 export default function Projects() {
-
     return (
-        
         <div
             style={{
                 background: "#0e172a",
-                borderRadius: 18,
-                boxShadow: "0 4px 24px #000a",
                 minHeight: "80vh",
                 width: "100%",
                 position: "relative",
                 overflow: "hidden",
-                padding: "2.5rem 2.5rem 2.5rem 2.5rem",
-                margin: "0 auto",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
                 zIndex: 2,
-                /* Hide scrollbar for all browsers */
-                msOverflowStyle: "none", /* IE and Edge */
-                scrollbarWidth: "none", /* Firefox */
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
             }}
-            className="hide-scrollbar"
+            className="hide-scrollbar rounded-none md:rounded-[18px] md:shadow-[0_4px_24px_#000a] p-4 sm:p-6 md:p-8 lg:p-10 m-0 md:mx-auto"
         >
             <ProjectsPage />
         </div>
-        
     );
-
 }
