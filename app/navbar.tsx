@@ -14,20 +14,14 @@ const Navbar: React.FC<NavbarProps> = ({ logoComponent }) => {
     });
 
     return (
-        <div className='fixed top-0 left-0 flex w-full box-border align-center justify-between pt-4 md:pt-8 pb-8 md:pb-16 px-4 md:px-16 lg:px-32 z-[9999]'>
+        <div className='fixed top-0 left-0 flex w-full box-border align-center justify-between pt-4 md:pt-8 pb-8 md:pb-16 px-4 md:px-16 lg:px-32 z-[100] pointer-events-none'>
             {logoComponent && (
                 <div className='hidden md:flex items-center mr-8'>
                     {logoComponent}
                 </div>
             )}
             <ul
-                onMouseLeave={() => {
-                    setPosition((pv) => ({
-                        ...pv,
-                        opacity: 0,
-                    }));
-                }}
-                className='relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1 scale-75 md:scale-100'
+                className='relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1 scale-75 md:scale-100 pointer-events-auto'
             >
                 <Tab setPosition={setPosition} path="/">Home</Tab>
                 <Tab setPosition={setPosition} path="/skills">Skills</Tab>

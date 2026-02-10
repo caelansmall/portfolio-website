@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Define the type for a project
 interface Project {
@@ -13,7 +13,8 @@ interface Project {
 // Example projects array (add more projects here easily)
 const projects: Project[] = [
   {
-    title: "The Digital Cookbook | thedigitalcookbook.com",
+    title: "The Digital Cookbook",
+    link: 'https://www.thedigitalcookbook.com',
     description: 'Engineered a full-stack web application with the purpose of being an online recipe management tool. Designed and coded the frontend using React. Created a RESTful API using Express and Node.js. User authentication is set up using AWS Cognito with a Lambda trigger for database synchronization. Designed and built a PostgreSQL database to be clean and efficient. Social feed and friends soon to come!',
     imageUrl: "images/thedigitalcookbook.png"
   },
@@ -24,12 +25,12 @@ const projects: Project[] = [
   },
   {
     title: "Enterprise Full Stack Application",
-    description: "Contributed to the design and implementation of a large-scale enterprise web application using Angular, Node.js, Express, and SQL. Designed and normalized database tables, established complex relationships, and developed stored procedures and advanced queries. Authored numerous RESTful API endpoints within a robust Express backend. On the frontend, implemented dynamic, interactive data presentations—including tables and forms—leveraging Angular’s component architecture and state management. Collaborated across the stack to deliver scalable, maintainable solutions for complex data workflows.",
+    description: "Contributed to the design and implementation of a large-scale enterprise web application using Angular, Node.js, Express, and SQL. Designed and normalized database tables, established complex relationships, and developed stored procedures and advanced queries. Authored numerous RESTful API endpoints within a robust Express backend. On the frontend, implemented dynamic, interactive data presentations—including tables and forms—leveraging Angular's component architecture and state management. Collaborated across the stack to deliver scalable, maintainable solutions for complex data workflows.",
     imageUrl: "images/fullStack.png",
   },
   {
     title: "Interactive Data Management Tool",
-    description: "Initiated and developed an interactive React and Node.js application to streamline team workflows. Engineered robust data handling by organizing, sorting, and displaying information from JSON files within a dynamic frontend interface. Implemented seamless export functionality, allowing users to generate well-formatted CSV, PDF, and XML reports, along with import capabilities to reload and continue previous sessions. Additionally, built a comprehensive Python maintenance script to automate and optimize JSON file management, saving weeks of manual effort. The tool’s intuitive design and advanced features resulted in a twofold increase in team efficiency.",
+    description: "Initiated and developed an interactive React and Node.js application to streamline team workflows. Engineered robust data handling by organizing, sorting, and displaying information from JSON files within a dynamic frontend interface. Implemented seamless export functionality, allowing users to generate well-formatted CSV, PDF, and XML reports, along with import capabilities to reload and continue previous sessions. Additionally, built a comprehensive Python maintenance script to automate and optimize JSON file management, saving weeks of manual effort. The tool's intuitive design and advanced features resulted in a twofold increase in team efficiency.",
     imageUrl: "images/dataTable.png",
   },
   {
@@ -47,7 +48,6 @@ const projects: Project[] = [
     description: "Designed and implemented an automated occupancy counter using IR sensors and an LCD display on the 8051 microcontroller, enabling essential businesses to safely monitor store capacity and enforce social distancing without additional staffing.",
     imageUrl: "images/covidAutoCounter.png",
   }
-  // Add more projects here
 ];
 
 // ProjectSection: Handles mouseover effects and larger layout
@@ -57,41 +57,47 @@ interface ProjectSectionProps {
 }
 
 const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = false }) => {
-  const [hovered, setHovered] = React.useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const sectionStyle: React.CSSProperties = {
     display: "flex",
-    flexDirection: reverse ? "row-reverse" : "row",
+    flexDirection: isMobile ? "column" : (reverse ? "row-reverse" : "row"),
     alignItems: "center",
     background: hovered ? "#f6f7fa" : "#f8f9fa",
-    borderRadius: 26,
+    borderRadius: isMobile ? 16 : 26,
     boxShadow: hovered
       ? "0 6px 24px rgba(0,0,0,0.12)"
       : "0 4px 18px rgba(0,0,0,0.09)",
-    padding: hovered ? "56px 38px" : "48px 32px",
-    gap: 64,
+    padding: isMobile ? "24px 20px" : (hovered ? "56px 38px" : "48px 32px"),
+    gap: isMobile ? 20 : 64,
     maxWidth: 1700,
-    minHeight: 210,
+    minHeight: isMobile ? "auto" : 210,
     margin: "0 auto",
     transition:
       "background 0.18s, box-shadow 0.18s cubic-bezier(.4,2,.6,1), transform 0.15s cubic-bezier(.4,2,.6,1), padding 0.15s cubic-bezier(.4,2,.6,1)",
-    transform: hovered ? "scale(1.013)" : "scale(1)"
+    transform: hovered && !isMobile ? "scale(1.013)" : "scale(1)"
   };
 
   const imgStyle: React.CSSProperties = {
-    width: hovered ? 260 : 240,
-    height: hovered ? 210 : 190,
+    width: isMobile ? "100%" : (hovered ? 260 : 240),
+    height: isMobile ? "auto" : (hovered ? 210 : 190),
+    maxWidth: isMobile ? "100%" : undefined,
     objectFit: "cover",
-    borderRadius: 20,
+    borderRadius: isMobile ? 12 : 20,
     boxShadow: hovered
       ? "0 4px 24px rgba(0,0,0,0.13)"
       : "0 2px 12px rgba(0,0,0,0.09)",
     background: "#e9ecef",
     transition: "box-shadow 0.15s, width 0.15s, height 0.15s, border-radius 0.15s"
   };
-
-
-
 
   return (
     <section
@@ -100,9 +106,24 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = fals
       onMouseLeave={() => setHovered(false)}
     >
       <img src={project.imageUrl} alt={project.title} style={imgStyle} />
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <h2 style={{ margin: 0, fontSize: "2.2rem", color: "#343a40", lineHeight: 1.18 }}>{project.title}</h2>
-        <p style={{ margin: "1.1rem 0 1.3rem 0", color: "#495057", fontSize: "1.17rem", lineHeight: 1.62, maxWidth: 700 }}>{project.description}</p>
+      <div style={{ flex: 1, minWidth: 0, textAlign: isMobile ? "center" : "left" }}>
+        <h2 style={{ 
+          margin: 0, 
+          fontSize: isMobile ? "1.5rem" : "2.2rem", 
+          color: "#343a40", 
+          lineHeight: 1.18 
+        }}>
+          {project.title}
+        </h2>
+        <p style={{ 
+          margin: "1.1rem 0 1.3rem 0", 
+          color: "#495057", 
+          fontSize: isMobile ? "0.95rem" : "1.17rem", 
+          lineHeight: 1.62, 
+          maxWidth: isMobile ? "100%" : 700 
+        }}>
+          {project.description}
+        </p>
         {project.link && (
           <a
             href={project.link}
@@ -112,7 +133,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = fals
               color: hovered ? "#0056b3" : "#007bff",
               textDecoration: hovered ? "underline" : "none",
               fontWeight: 600,
-              fontSize: "1.15rem",
+              fontSize: isMobile ? "1rem" : "1.15rem",
               transition: "color 0.14s, text-decoration 0.14s"
             }}
           >
@@ -125,10 +146,18 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ project, reverse = fals
 };
 
 const ProjectsPage: React.FC = () => {
-  const [modalProject, setModalProject] = React.useState<Project | null>(null);
+  const [modalProject, setModalProject] = useState<Project | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
-    <div style={{ background: "#0e172a", minHeight: "100vh", width: "100vw", margin: 0, padding: 0, overflow: 'hidden' }}>
+    <div style={{ background: "#0e172a", minHeight: "100vh", width: "100%", margin: 0, padding: 0, overflow: 'hidden' }}>
       {/* Subtle animated blurred gradient background */}
       <div
         style={{
@@ -145,8 +174,15 @@ const ProjectsPage: React.FC = () => {
           transition: 'background 0.5s',
         }}
       />
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "3.5rem 1rem 3.5rem 1rem", paddingTop: "140px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
+      <div style={{ 
+        position: 'relative', 
+        zIndex: 1, 
+        maxWidth: 1100, 
+        margin: "0 auto", 
+        padding: isMobile ? "1rem" : "3.5rem 1rem 3.5rem 1rem", 
+        paddingTop: isMobile ? "100px" : "140px" 
+      }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? "1.5rem" : "3.5rem" }}>
           {projects.map((project, idx) => (
             <div key={idx} style={{ cursor: "pointer" }} onClick={() => setModalProject(project)}>
               <ProjectSection project={project} reverse={idx % 2 === 1} />
@@ -163,23 +199,30 @@ const ProjectsPage: React.FC = () => {
             left: 0,
             width: "100vw",
             height: "100vh",
-            background: "rgba(20,22,30,0.72)",
-            zIndex: 9999,
+            background: "rgba(20,22,30,0.85)",
+            backdropFilter: "blur(4px)",
+            zIndex: 10000,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             transition: "background 0.3s",
+            padding: isMobile ? "1rem" : "2rem",
           }}
           onClick={() => setModalProject(null)}
         >
+          {/* Close button - OUTSIDE the content div */}
+          
+
+          {/* Modal content */}
           <div
             style={{
               background: "#f8f9fa",
-              borderRadius: 26,
-              boxShadow: "0 8px 48px 0 #000b",
-              padding: "2.7rem 2.5rem 2.2rem 2.5rem",
-              minWidth: 340,
-              maxWidth: 600,
+              borderRadius: isMobile ? 16 : 26,
+              boxShadow: "0 8px 48px 0 rgba(0,0,0,0.7)",
+              padding: isMobile ? "2rem 1.5rem" : "2.7rem 2.5rem 2.2rem 2.5rem",
+              minWidth: isMobile ? "auto" : 340,
+              maxWidth: isMobile ? "100%" : 600,
+              width: isMobile ? "100%" : "auto",
               maxHeight: "90vh",
               overflowY: "auto",
               position: "relative",
@@ -187,25 +230,41 @@ const ProjectsPage: React.FC = () => {
               flexDirection: "column",
               alignItems: "center",
             }}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <button
-              onClick={() => setModalProject(null)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setModalProject(null);
+              }}
               style={{
-                position: "absolute",
-                top: 16,
-                right: 16,
+                position: "fixed",
+                top: isMobile ? "50px" : "2.5rem",
+                right: isMobile ? "1.5rem" : "2.5rem",
                 background: "#eee",
                 border: "none",
                 borderRadius: "50%",
-                width: 36,
-                height: 36,
-                fontSize: 22,
+                width: 40,
+                height: 40,
+                fontSize: 24,
                 fontWeight: 700,
                 color: "#444",
                 cursor: "pointer",
-                boxShadow: "0 2px 8px #0002",
-                zIndex: 2,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                zIndex: 10001,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background 0.2s, transform 0.1s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#ddd";
+                e.currentTarget.style.transform = "scale(1.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#eee";
+                e.currentTarget.style.transform = "scale(1)";
               }}
               aria-label="Close"
             >
@@ -214,18 +273,49 @@ const ProjectsPage: React.FC = () => {
             <img
               src={modalProject.imageUrl}
               alt={modalProject.title}
-              style={{ width: 320, height: 230, objectFit: "cover", borderRadius: 18, marginBottom: 24, boxShadow: "0 2px 16px #0003" }}
+              style={{ 
+                width: isMobile ? "100%" : 320, 
+                height: isMobile ? "auto" : 230, 
+                maxWidth: "100%",
+                objectFit: "cover", 
+                borderRadius: 18, 
+                marginBottom: 24, 
+                boxShadow: "0 2px 16px rgba(0,0,0,0.2)" 
+              }}
             />
-            <h2 style={{ margin: 0, fontSize: "2.2rem", color: "#343a40", lineHeight: 1.18 }}>{modalProject.title}</h2>
-            <p style={{ margin: "1.1rem 0 1.3rem 0", color: "#495057", fontSize: "1.17rem", lineHeight: 1.62, maxWidth: 540 }}>{modalProject.longDescription || modalProject.description}</p>
+            <h2 style={{ 
+              margin: 0, 
+              fontSize: isMobile ? "1.5rem" : "2.2rem", 
+              color: "#343a40", 
+              lineHeight: 1.18,
+              textAlign: "center"
+            }}>
+              {modalProject.title}
+            </h2>
+            <p style={{ 
+              margin: "1.1rem 0 1.3rem 0", 
+              color: "#495057", 
+              fontSize: isMobile ? "0.95rem" : "1.17rem", 
+              lineHeight: 1.62, 
+              maxWidth: 540,
+              textAlign: isMobile ? "left" : "center"
+            }}>
+              {modalProject.longDescription || modalProject.description}
+            </p>
             {modalProject.images && modalProject.images.length > 1 && (
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "1.2rem 0 0 0" }}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "1.2rem 0 0 0", justifyContent: "center" }}>
                 {modalProject.images.map((img, idx) => (
                   <img
                     key={idx}
                     src={img}
                     alt={modalProject.title + " extra " + idx}
-                    style={{ width: 110, height: 80, objectFit: "cover", borderRadius: 8, boxShadow: "0 1px 7px #0001" }}
+                    style={{ 
+                      width: isMobile ? 80 : 110, 
+                      height: isMobile ? 60 : 80, 
+                      objectFit: "cover", 
+                      borderRadius: 8, 
+                      boxShadow: "0 1px 7px rgba(0,0,0,0.1)" 
+                    }}
                   />
                 ))}
               </div>
@@ -239,7 +329,7 @@ const ProjectsPage: React.FC = () => {
                   color: "#007bff",
                   textDecoration: "underline",
                   fontWeight: 600,
-                  fontSize: "1.15rem",
+                  fontSize: isMobile ? "1rem" : "1.15rem",
                   marginTop: 18,
                 }}
               >
